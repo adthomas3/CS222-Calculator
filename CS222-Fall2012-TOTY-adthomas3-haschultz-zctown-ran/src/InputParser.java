@@ -8,35 +8,29 @@ public class InputParser {
 	public InputParser(){
 		
 	};
-	public String Solve(String input){
-
-	    char arr[] = input.toCharArray() ; 
-	    String value, operand1, operand2,operator, output;
-	  
+	public String Solve(String[] input){
+	    double operand1, operand2, output;
+	    String operator; 
 	    boolean operand = false, notEmpty = true;
-	    Stack<String> operandStack = new Stack<String>();
+	    Stack<Double> operandStack = new Stack<Double>();
 	    Stack<String> operatorStack = new Stack<String>();
 
-	    for(char c: arr){
-
-	        value = Character.toString(c);        
-	        operand = isOperator(value);
-
-	        
-	        if(!operand/* is operand */){
-
-	            operandStack.push(value);
-
+	    for(String currentElement: input){	           
+	        operand = isOperator(currentElement);
+        
+	        if(!operand/* is operand */){        	
+	        	Double currentOperand = Double.parseDouble(currentElement);
+	            operandStack.push(currentOperand);
 	        }
 	        else{
 
 	                if(operatorStack.isEmpty()){
 
-	                    operatorStack.push(value);
+	                    operatorStack.push(currentElement);
 	                }
 	                else{
 
-	                    if( /* stack value */ (precedenceLevel(operatorStack.peek().charAt(0))) >= (precedenceLevel(c) /* input value */) ){
+	                    if( /* stack value */ (precedenceLevel(operatorStack.peek()) >= (precedenceLevel(currentElement)) /* input value */)){
 
 	                        do{
 
@@ -49,14 +43,14 @@ public class InputParser {
 	                            if(operatorStack.isEmpty() /* end loop if stack if empty */){                               
 	                            	break;
 	                            	}
-	                            if(/* top of operator stack */ (precedenceLevel(operatorStack.peek().charAt(0))) <  (precedenceLevel(c) /* input value */) ){
+	                            if(/* top of operator stack */ (precedenceLevel(operatorStack.peek().charAt(0))) <  (precedenceLevel(currentElement) /* input value */) ){
 	                            	break;
 	                            	}
 
 	                        } while(notEmpty);                      
 	                    }
 
-	                    operatorStack.push(value);
+	                    operatorStack.push(currentElement);
 	                }
 	        }
 	    }
@@ -100,6 +94,24 @@ public class InputParser {
 	        return false;
 	    }
 	}
+	
+	public double calcFunctionCaller(double operand1, double operand2, String value){
+		if(value.equals("+")) 
+		 	return Add.Calculate(operand1, operand2);
+		else if (value.equals("%"))
+			return Modulus.Calculate(operand1, operand2);					 
+		else if (value.equals("-"))
+			return Subtract.Calulate(operand1, operand2);
+		else if (value.equals("^"))
+			return Powers.Calculate(operand1, operand2);
+		else if (value.equals("*"))
+			return Multiply.Calculate(operand1,operand2);
+		else if (value.equals("/"))
+			return Division.Calculate(operand1,operand2);
+
+	        
+		
+	}
 
 	/** 
 	 * Calculates a value for each operator based on it's precedence
@@ -111,27 +123,27 @@ public class InputParser {
 	 * @param operand char the value being tested
 	 * @return int return precedence level of operator
 	 */
-	public int precedenceLevel(char operand) {
+	public int precedenceLevel(String operand) {
 	    switch (operand) {
-	        case '+':
-	        case '-':
+	        case "+":
+	        case "-":
 	            return 0;
-	        case '*':
-	        case '/':
-	        case '%':
+	        case "*":
+	        case "/":
+	        case "%":
 	            return 1;
-	        case '^':
+	        case "^":
 	            return 2;
-	        case '(':
-	        case ')':
+	        case "(":
+	        case ")":
 	            return 3;
 	        default:
 	            System.out.println("error! invalid operator");
-	                return 0;
+	             return 0;
 	    	}
 	    }
 	    
-	   public String Splitter(String input){
+	   public String[] Splitter(String input){
 		   String currentChar;
 		   String temp = "";
 		   int numberOfOperators = 0;
@@ -163,6 +175,6 @@ public class InputParser {
 				   
 			   }   
 		   }
-		  return temp;
+		  return temp.split("_");
 	   }
 	}
