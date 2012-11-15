@@ -17,76 +17,74 @@ import javax.swing.JButton;
 public class ProgrammerConversionFrame extends JFrame {
 
 	private static final long serialVersionUID = 696681375664303576L;
-	
+
 	public ProgrammerConversionFrame(String title){
-	 
-	super(title);
-	GridLayout grid = new GridLayout(4, 1);
-	setLayout(grid);
-	setSize(200,200);
-	setVisible(true);
-	setResizable(false);
-	 
-	JComboBox convert = new JComboBox();
-	add(convert);
-	convert.addItem("Binary");
-	convert.addItem("Octal");
-	convert.addItem("Decimal");
-	convert.addItem("Hexadecimal");
-	convert.addActionListener(new ActionListener(){
-	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-	
-	 
-	 
-	 
+		
+		super(title);
+		GridLayout grid = new GridLayout(4, 1);
+		setLayout(grid);
+		setSize(200,200);
+		setVisible(true);
+		setResizable(false);
+		
+		JComboBox convert = new JComboBox();
+		add(convert);
+		convert.addItem("Binary");
+		convert.addItem("Octal");
+		convert.addItem("Decimal");
+		convert.addItem("Hexadecimal");
+		
+		convert.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				
+					
+					
+			}
+
+		});
+		
+		JLabel to = new JLabel("To:");
+		add(to);
+		
+		JComboBox convertTo = new JComboBox();
+		add(convertTo);
+		convertTo.addItem("Binary");
+		convertTo.addItem("Octal");
+		convertTo.addItem("Decimal");
+		convertTo.addItem("Hexadecimal");
+		
+		convertTo.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				
+					
+					
+			}
+
+		});
+		
+		JButton conversion = new JButton("Convert");
+		add(conversion);
+
+		conversion.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				
+					
+					
+			}
+
+		});
+		
+		
+		
 	}
 	
-	});
-	 
-	JLabel to = new JLabel("To:");
-	add(to); 
-	
-	JComboBox convertTo = new JComboBox();
-	add(convertTo);
-	convertTo.addItem("Binary");
-	convertTo.addItem("Octal");
-	convertTo.addItem("Decimal");
-	convertTo.addItem("Hexadecimal");
-	 
-	convertTo.addActionListener(new ActionListener(){
-	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-	
-	 
-	 
-	 
-	}
-	
-	});
-	 
-	JButton conversion = new JButton("Convert");
-	add(conversion);
-	
-	conversion.addActionListener(new ActionListener(){
-	@Override
-	public void actionPerformed(ActionEvent e) {
-	
-	 
-	 
-	 
-	}
-	
-	});
-	 
-	 
-	 
-	}
-	 
 }
-
-
-
-

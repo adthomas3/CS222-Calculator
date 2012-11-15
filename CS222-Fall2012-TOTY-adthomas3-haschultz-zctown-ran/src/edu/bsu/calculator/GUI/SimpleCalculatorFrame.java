@@ -1,4 +1,3 @@
-
 /**
  * 
  * @author Andrew Thomas, Harrison Schultz, Ran An, Zach Town
@@ -20,149 +19,153 @@ import javax.swing.JTextField;
 
 public class SimpleCalculatorFrame extends JFrame
 {
- 
-private static final long serialVersionUID = -6084863562874622616L;
+	
+	private static final long serialVersionUID = -6084863562874622616L;
 
-public SimpleCalculatorFrame(String title)
-{
-super(title);
-setSize(700, 400);
-setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
- 
-GridBagLayout gridbag = new GridBagLayout();
-setLayout(gridbag);
- 
-GridBagConstraints constraints = new GridBagConstraints();
- 
-constraints.fill = GridBagConstraints.BOTH;
- 
+	public SimpleCalculatorFrame(String title)
+	{
+		super(title);
+		setSize(900, 400);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		GridBagLayout gridbag = new GridBagLayout();
+		setLayout(gridbag);
+		
+		GridBagConstraints constraints = new GridBagConstraints();
+	
+		constraints.fill = GridBagConstraints.BOTH;
+		
         boolean selected = false;
         final JCheckBox scientific = new JCheckBox("Scientific", selected);
         add(scientific, constraints);
         
         scientific.addActionListener(new ActionListener(){
 
-@Override
-public void actionPerformed(ActionEvent e) {
-	if (scientific.isSelected() == true){
-		ScientificFunctionFrame frame = new ScientificFunctionFrame("Scientific Functions");
-		frame.setVisible(true);
-	}
-	   
-}
-});
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				if (scientific.isSelected() == true)
+				{
+					ScientificFunctionFrame frame = new ScientificFunctionFrame("Scientific Functions");
+				    frame.setVisible(true);
+				}
+				
+			    
+			}
+
+		});
         
       
         
         boolean selected2 = false;
-        JCheckBox programmer = new JCheckBox("Programmer", selected2);
+        final JCheckBox programmer = new JCheckBox("Programmer", selected2);
         add(programmer, constraints);
-        /**
+        
         programmer.addActionListener(new ActionListener(){
 
-@Override
-public void actionPerformed(ActionEvent e) {
+			@Override
+			public void actionPerformed(ActionEvent e) {
 
-if (scientific.isSelected() == true)
-{
-ProgrammerConversionFrame frame = new ProgrammerConversionFrame("Programmer");
-   frame.setVisible(true);
-}
- 
- 
-}
+				if (programmer.isSelected() == true)
+				{
+					ProgrammerConversionFrame frame = new ProgrammerConversionFrame("Programmer");
+				    frame.setVisible(true);
+				}
+					
+					
+			}
 
-});
-        */
+		});
+        
        
         boolean selected3 = false;
-        JCheckBox unitConversion = new JCheckBox("Unit Conversion", selected3);
+        final JCheckBox unitConversion = new JCheckBox("Unit Conversion", selected3);
         add(unitConversion, constraints);
-        /**
+        
         unitConversion.addActionListener(new ActionListener(){
 
-@Override
-public void actionPerformed(ActionEvent e) {
- 
-if (scientific.isSelected() == true)
-{
-UnitConversionFrame frame = new UnitConversionFrame("Unit Conversions");
-   frame.setVisible(true);
-}
- 
- 
- 
-}
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				if (unitConversion.isSelected() == true)
+				{
+					UnitConversionFrame frame = new UnitConversionFrame("Unit Conversions");
+				    frame.setVisible(true);
+				}
+				
+					
+					
+			}
 
-});
-        */
+		});
+        
         boolean selected4 = false;
         final JCheckBox numberPad = new JCheckBox("Number Pad", selected4);
         add(numberPad, constraints);
         
         numberPad.addActionListener(new ActionListener(){
 
-@Override
-public void actionPerformed(ActionEvent e) {
- 
-if (numberPad.isSelected() == true)
-{
-NumberPadFrame panel = new NumberPadFrame("Number Pad");
-   panel.setVisible(true);
-}
- 
- 
- 
-}
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				if (numberPad.isSelected() == true)
+				{
+					NumberPadFrame panel = new NumberPadFrame("Number Pad");
+				    panel.setVisible(true);
+				}
+				
+					
+					
+			}
 
-});
- 
-constraints.ipadx = 350;
+		});
+		
+		constraints.ipadx = 350;
         constraints.ipady = 300;
- 
-JTextField ComputationTextfield = new JTextField();
-ComputationTextfield.setSize(350, 300);
-ComputationTextfield.setHorizontalAlignment(JTextField.RIGHT);
-add(ComputationTextfield, constraints);
- 
-constraints.ipadx = 0;
-constraints.ipady = 0;
-constraints.fill = GridBagConstraints.BOTH;
-constraints.weightx = 1;
-constraints.weighty = GridBagConstraints.BOTH;
-constraints.gridy = 2;
-constraints.gridx = 0;
- 
-   JButton addition = new JButton("+");
-add(addition, constraints);
- 
-constraints.gridx = 1;
- 
-JButton subtraction = new JButton("-");
-add(subtraction, constraints);
- 
-constraints.gridx = 2;
- 
-JButton multiplication = new JButton("x");
-add(multiplication, constraints);
- 
-constraints.gridx = 3;
- 
-JButton division = new JButton("/");
-add(division, constraints);
- 
-constraints.gridx = 4;
- 
-JButton copy = new JButton("copy");
-add(copy, constraints);
- 
-constraints.gridx = 5;
+		
+		JTextField ComputationTextfield = new JTextField();
+		ComputationTextfield.setSize(350, 300);
+		ComputationTextfield.setHorizontalAlignment(JTextField.RIGHT);
+		add(ComputationTextfield, constraints);
+	
+		constraints.ipadx = 0;
+		constraints.ipady = 0;
+		constraints.fill = GridBagConstraints.BOTH;
+		constraints.weightx = 1;
+		constraints.weighty = GridBagConstraints.BOTH;
+		constraints.gridy = 2;
+		constraints.gridx = 0;
+		
+	    JButton addition = new JButton("+");
+		add(addition, constraints);
+		
+		constraints.gridx = 1;
+		
+		JButton subtraction = new JButton("-");
+		add(subtraction, constraints);
+		
+		constraints.gridx = 2;
+		
+		JButton multiplication = new JButton("x");
+		add(multiplication, constraints);
+		
+		constraints.gridx = 3;
+		
+		JButton division = new JButton("/");
+		add(division, constraints);
+		
+		constraints.gridx = 4;
+		
+		JButton copy = new JButton("copy");
+		add(copy, constraints);
+		
+		constraints.gridx = 5;
         constraints.gridwidth = GridBagConstraints.REMAINDER;
- 
+		
         JButton clear = new JButton("clear");
-add(clear, constraints);
- 
- 
-}
+		add(clear, constraints);
+		
+		
+	}
 
 }
