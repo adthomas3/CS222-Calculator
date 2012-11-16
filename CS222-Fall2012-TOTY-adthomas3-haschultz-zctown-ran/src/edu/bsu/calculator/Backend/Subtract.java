@@ -1,3 +1,4 @@
+package edu.bsu.calculator.Backend;
 /**
  * 
  * @author Andrew Thomas, Harrison Schultz, Ran An, Zach Town
@@ -33,7 +34,7 @@ public class Subtract {
 		return n1 - n2;
 	}
 	
-	public static double Calculate(double num1, double num2){
+	public static double Calculate(double num2, double num1){
 		return num1 - num2;
 	}
 }

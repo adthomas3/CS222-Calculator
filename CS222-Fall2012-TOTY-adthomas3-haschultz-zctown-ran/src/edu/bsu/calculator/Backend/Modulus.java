@@ -1,16 +1,14 @@
-/**
- * 
- * @author Andrew Thomas, Harrison Schultz, Ran An, Zach Town
- */
-public class Division {
+package edu.bsu.calculator.Backend;
+
+public class Modulus {
 	private static double numerator;
 	private static double denominator;
 	
-	public Division(){
+	public Modulus(){
 		
 	}
 	
-	public Division(double num, double denom){
+	public Modulus(double num, double denom){
 		numerator = num;
 		denominator = denom;
 	}
@@ -24,9 +22,9 @@ public class Division {
 	}
 	
 	public double Calculate(){
-		return numerator / denominator;
+		return numerator % denominator;
 	}
-	public static double Calculate(double num, double denom){
-		return num / denom;
+	public static double Calculate(double denom, double num){
+		return num % denom;
 	}
 }

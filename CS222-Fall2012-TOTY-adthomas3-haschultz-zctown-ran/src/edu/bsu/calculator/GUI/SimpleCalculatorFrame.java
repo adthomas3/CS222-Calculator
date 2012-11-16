@@ -5,24 +5,21 @@
 
 
 package edu.bsu.calculator.GUI;
-
-
-
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import edu.bsu.calculator.Backend.InputParser;
 
-public class SimpleCalculatorFrame<InputParser> extends JFrame
+public class SimpleCalculatorFrame extends JFrame
 {
-	
 	private static final long serialVersionUID = -6084863562874622616L;
 
 	public SimpleCalculatorFrame(String title)
@@ -123,10 +120,13 @@ public class SimpleCalculatorFrame<InputParser> extends JFrame
 		constraints.ipadx = 350;
         constraints.ipady = 300;
 		
-		JTextField ComputationTextfield = new JTextField();
-		ComputationTextfield.setSize(350, 300);
-		ComputationTextfield.setHorizontalAlignment(JTextField.RIGHT);
+		final JTextField ComputationTextfield = new JTextField();
+		ComputationTextfield.setSize(350, 2);
 		add(ComputationTextfield, constraints);
+		
+		final JTextArea OutputHistory = new JTextArea();
+		OutputHistory.setSize(350, 300);
+		add(OutputHistory, constraints);
 	
 		constraints.ipadx = 0;
 		constraints.ipady = 0;
@@ -136,23 +136,23 @@ public class SimpleCalculatorFrame<InputParser> extends JFrame
 		constraints.gridy = 2;
 		constraints.gridx = 0;
 		
-		String s = ComputationTextfield.getText();
 		
 		
 		ComputationTextfield.addKeyListener(new KeyListener(){
-
+			
+			InputParser parser = new InputParser();
 			@Override
 			public void keyPressed(KeyEvent key) {
-				if (key.equals(KeyEvent.VK_ENTER)){
-					InputParser parser = new InputParser();
-					String[] data = parser.Splitter(s);
-					
+				int e = key.getKeyCode();
+				if (e == KeyEvent.VK_ENTER){
+					String s = ComputationTextfield.getText();
+					OutputHistory.setText(parser.Solve(parser.Splitter(s)));
+					OutputHistory.updateUI();
 				}
-				
 			}
 
 			@Override
-			public void keyReleased(KeyEvent arg0) {
+			public void keyReleased(KeyEvent key) {
 				// TODO Auto-generated method stub
 				
 			}

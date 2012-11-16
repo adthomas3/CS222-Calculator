@@ -1,3 +1,4 @@
+package edu.bsu.calculator.Backend;
 /**
  * 
  * @author Andrew Thomas, Harrison Schultz, Ran An, Zach Town
@@ -8,8 +9,8 @@ public class InputParser {
 	
 	public InputParser(){
 		
-	};
-	public double Solve(String[] input){
+	}
+	public String Solve(String[] input){
 	    double operand1, operand2, output = 0;
 	    String operator; 
 	    Stack<Double> operandStack = new Stack<Double>();
@@ -19,37 +20,35 @@ public class InputParser {
         
 	        if(isOperator(currentElement) == false /* is operand */){        	
 	        	Double currentOperand = Double.parseDouble(currentElement);
-	        	System.out.println(currentOperand);
 	            operandStack.push(currentOperand);
 	        }
 	        else{
 	        	if(operatorStack.isEmpty())
 	                    operatorStack.push(currentElement);	
-	            else{     
+	        	else { 
 	                while(!operatorStack.isEmpty() && precedenceLevel(operatorStack.peek()) >=  (precedenceLevel(currentElement))){
 	                            operand1 = operandStack.pop();
-	                            System.out.println(operand1);
 	                            operand2 = operandStack.pop();
-	                            System.out.println(operand2);
 	                            operator = operatorStack.pop();
 	                            output = calcFunctionCaller(operand1,operand2, operator);
 	                            operandStack.push(output);  
 	                    }
-	                if (precedenceLevel(operatorStack.peek()) < (precedenceLevel(currentElement)))
+	                //if (!operatorStack.isEmpty() && precedenceLevel(operatorStack.peek()) < (precedenceLevel(currentElement))){
 	                	operatorStack.push(currentElement);
-	            	}
+	            		
+	                
+	                }
 	            }
 	        }
 	    while(!operatorStack.isEmpty()){
 	    operand1 = operandStack.pop();
-        System.out.println(operand1);
         operand2 = operandStack.pop();
-        System.out.println(operand2);
         operator = operatorStack.pop();
         output = calcFunctionCaller(operand1,operand2, operator);
         operandStack.push(output);}  
-	    	return output;
-	    }
+	     
+	    return ""  + output;
+	  }
 
 
 	/**
