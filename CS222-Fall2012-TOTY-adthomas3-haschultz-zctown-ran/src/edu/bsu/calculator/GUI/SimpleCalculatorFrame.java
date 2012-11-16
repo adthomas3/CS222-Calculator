@@ -7,17 +7,20 @@
 package edu.bsu.calculator.GUI;
 
 
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
-public class SimpleCalculatorFrame extends JFrame
+public class SimpleCalculatorFrame<InputParser> extends JFrame
 {
 	
 	private static final long serialVersionUID = -6084863562874622616L;
@@ -113,9 +116,6 @@ public class SimpleCalculatorFrame extends JFrame
 					NumberPadFrame panel = new NumberPadFrame("Number Pad");
 				    panel.setVisible(true);
 				}
-				
-					
-					
 			}
 
 		});
@@ -135,6 +135,35 @@ public class SimpleCalculatorFrame extends JFrame
 		constraints.weighty = GridBagConstraints.BOTH;
 		constraints.gridy = 2;
 		constraints.gridx = 0;
+		
+		String s = ComputationTextfield.getText();
+		
+		
+		ComputationTextfield.addKeyListener(new KeyListener(){
+
+			@Override
+			public void keyPressed(KeyEvent key) {
+				if (key.equals(KeyEvent.VK_ENTER)){
+					InputParser parser = new InputParser();
+					String[] data = parser.Splitter(s);
+					
+				}
+				
+			}
+
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+			
 		
 	    JButton addition = new JButton("+");
 		add(addition, constraints);

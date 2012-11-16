@@ -9,18 +9,17 @@ public class InputParser {
 	public InputParser(){
 		
 	};
-	public double Solve(String[] Splitter()){
-	    double operand1, operand2, output;
+	public double Solve(String[] input){
+	    double operand1, operand2, output = 0;
 	    String operator; 
-	    boolean operand = false;
 	    Stack<Double> operandStack = new Stack<Double>();
 	    Stack<String> operatorStack = new Stack<String>();
 
 	    for(String currentElement: input){	           
-	        operand = isOperator(currentElement);
         
-	        if(!operand/* is operand */){        	
+	        if(isOperator(currentElement) == false /* is operand */){        	
 	        	Double currentOperand = Double.parseDouble(currentElement);
+	        	System.out.println(currentOperand);
 	            operandStack.push(currentOperand);
 	        }
 	        else{
@@ -29,21 +28,28 @@ public class InputParser {
 	            else{     
 	                while(!operatorStack.isEmpty() && precedenceLevel(operatorStack.peek()) >=  (precedenceLevel(currentElement))){
 	                            operand1 = operandStack.pop();
+	                            System.out.println(operand1);
 	                            operand2 = operandStack.pop();
+	                            System.out.println(operand2);
 	                            operator = operatorStack.pop();
-	                            output = calcFunctionCaller(operand1,operand2);
+	                            output = calcFunctionCaller(operand1,operand2, operator);
 	                            operandStack.push(output);  
 	                    }
-                      
+	                if (precedenceLevel(operatorStack.peek()) < (precedenceLevel(currentElement)))
+	                	operatorStack.push(currentElement);
 	            	}
-
-	             operatorStack.push(currentElement);
 	            }
 	        }
+	    while(!operatorStack.isEmpty()){
+	    operand1 = operandStack.pop();
+        System.out.println(operand1);
+        operand2 = operandStack.pop();
+        System.out.println(operand2);
+        operator = operatorStack.pop();
+        output = calcFunctionCaller(operand1,operand2, operator);
+        operandStack.push(output);}  
+	    	return output;
 	    }
-
-	    return output;         
-	}
 
 
 	/**
@@ -68,19 +74,21 @@ public class InputParser {
 	    }
 	}
 	
-	public double calcFunctionCaller(double operand1, double operand2, String value){
-		if(value.equals("+")) 
+	public double calcFunctionCaller(double operand1, double operand2, String operator){
+		if(operator.equals("+")) 
 		 	return Add.Calculate(operand1, operand2);
-		else if (value.equals("%"))
+		else if (operator.equals("%"))
 			return Modulus.Calculate(operand1, operand2);					 
-		else if (value.equals("-"))
-			return Subtract.Calulate(operand1, operand2);
-		else if (value.equals("^"))
+		else if (operator.equals("-"))
+			return Subtract.Calculate(operand1, operand2);
+		else if (operator.equals("^"))
 			return Powers.Calculate(operand1, operand2);
-		else if (value.equals("*"))
+		else if (operator.equals("*"))
 			return Multiply.Calculate(operand1,operand2);
-		else if (value.equals("/"))
+		else if (operator.equals("/"))
 			return Division.Calculate(operand1,operand2);
+		
+		return -1;
 
 	        
 		
@@ -138,12 +146,9 @@ public class InputParser {
 					   temp = "" + temp + input.substring(0, i) + "_";			  
 				   else
 					   temp = "" + temp + input.substring(previousOperatorPosition+1,i) + "_";
-				   temp	= "" + temp + input.substring(i, i+1) + "_";
-				   System.out.println(temp);
+				   temp	= "" + temp + input.substring(i, i+1) + "_";   
 				   if (numberOfOperators == checkOperators)
 					   temp	= "" + temp + input.substring(i+1);
-				   
-				   System.out.println(temp);
 				   previousOperatorPosition = i;
 				   
 			   }   

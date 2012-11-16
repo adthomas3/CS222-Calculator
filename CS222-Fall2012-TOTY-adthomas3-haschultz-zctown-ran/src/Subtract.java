@@ -32,6 +32,7 @@ public class Subtract {
 	public double Calculate(){
 		return n1 - n2;
 	}
+	
 	public static double Calculate(double num1, double num2){
 		return num1 - num2;
 	}

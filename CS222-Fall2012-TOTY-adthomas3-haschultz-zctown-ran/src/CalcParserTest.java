@@ -13,13 +13,9 @@ public class CalcParserTest {
 	public static void main(String[] args) {
 		
 		InputParser parser = new InputParser();
-		String input = "30+1*2/154-3";	
-		//String[] data = parser.Splitter(input);
-		
-		//for(String x : data)
-		System.out.println(parser.Splitter(input));
-		
-		
+		String input = "30+1*2";	
+		String[] data = parser.Splitter(input);
+		System.out.println(parser.Solve(data));
 	}
 
 }
