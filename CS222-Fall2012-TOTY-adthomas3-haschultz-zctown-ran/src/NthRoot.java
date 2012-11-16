@@ -1,8 +1,8 @@
 import java.lang.Math;
 
 public class NthRoot {
-	private double nroot;
-	private double number;
+	private static double nroot;
+	private static double number;
 	
 	public NthRoot(){
 		
@@ -24,4 +24,8 @@ public class NthRoot {
 	public double Calculate(){
 		return Math.pow(Math.exp (1/nroot),Math.log(number));
 	}
+	public static double Calculate(double nroot, double number){
+		return Math.pow(Math.exp (1/nroot),Math.log(number));
+	}
 }
+

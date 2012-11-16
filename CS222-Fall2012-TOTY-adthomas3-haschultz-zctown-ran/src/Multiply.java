@@ -1,7 +1,11 @@
+/**
+ * 
+ * @author Andrew Thomas, Harrison Schultz, Ran An, Zach Town
+ */
 public class Multiply {
 	
-	private double n1;
-	private double n2;
+	private static double n1;
+	private static double n2;
 	
 	public Multiply(){
 		
@@ -27,5 +31,8 @@ public class Multiply {
 	
 	public double Calculate(){
 		return n1 * n2;
+	}
+	public static double Calculate(double num1, double num2){
+		return num1 * num2;
 	}
 }

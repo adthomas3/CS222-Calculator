@@ -1,7 +1,7 @@
 
 public class Modulus {
-	private double numerator;
-	private double denominator;
+	private static double numerator;
+	private static double denominator;
 	
 	public Modulus(){
 		
@@ -22,5 +22,8 @@ public class Modulus {
 	
 	public double Calculate(){
 		return numerator % denominator;
+	}
+	public static double Calculate(double num, double denom){
+		return num % denom;
 	}
 }

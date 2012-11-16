@@ -1,13 +1,17 @@
-public class Add {
+/**
+ * 
+ * @author Andrew Thomas, Harrison Schultz, Ran An, Zach Town
+ */
+ public class Add {
 	
-	private double n1;
-	private double n2;
+	private static double n1;
+	private static double n2;
 	
-	public Add(){
+	private Add(){
 		
 	}
 	
-	public Add(double num1, double num2){
+	private Add(double num1, double num2){
 		n1 = num1;
 		n2 = num2;
 	}
@@ -26,6 +30,9 @@ public class Add {
 	}
 	
 	public double Calculate(){
+		return n1 + n2;
+	}
+	public static double Calculate(double n1, double n2){
 		return n1 + n2;
 	}
 }

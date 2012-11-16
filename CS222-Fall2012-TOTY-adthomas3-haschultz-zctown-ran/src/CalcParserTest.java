@@ -1,5 +1,9 @@
-import java.io.InputStream;
+/**
+ * 
+ * @author Andrew Thomas, Harrison Schultz, Ran An, Zach Town
+ */
 
+import java.io.InputStream;
 
 public class CalcParserTest {
 

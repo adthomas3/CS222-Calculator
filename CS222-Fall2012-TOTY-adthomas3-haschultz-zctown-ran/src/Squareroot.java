@@ -1,7 +1,7 @@
 import java.lang.Math;
 
 public class Squareroot {
-	private double number;
+	private static double number;
 	
 	public Squareroot(){
 		
@@ -13,5 +13,8 @@ public class Squareroot {
 	
 	public double Calculate(){
 		return Math.sqrt(number);
+	}
+	public static double Calculate(double n){
+		return Math.sqrt(n);
 	}
 }

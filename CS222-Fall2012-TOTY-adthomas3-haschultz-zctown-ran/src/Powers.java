@@ -1,7 +1,7 @@
 
 public class Powers {
-	private double exponent;
-	private double base;
+	private static double exponent;
+	private static double base;
 	
 	public Powers(){
 		
@@ -22,5 +22,9 @@ public class Powers {
 	
 	public double Calculate(){
 		return Math.pow(base, exponent);
+	}
+	
+	public double Calculate(double b, double e){
+		return Math.pow(b, e);
 	}
 }

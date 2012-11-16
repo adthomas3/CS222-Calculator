@@ -1,7 +1,10 @@
-
+/**
+ * 
+ * @author Andrew Thomas, Harrison Schultz, Ran An, Zach Town
+ */
 public class Division {
-	private double numerator;
-	private double denominator;
+	private static double numerator;
+	private static double denominator;
 	
 	public Division(){
 		
@@ -22,5 +25,8 @@ public class Division {
 	
 	public double Calculate(){
 		return numerator / denominator;
+	}
+	public static double Calculate(double num, double denom){
+		return num / denom;
 	}
 }

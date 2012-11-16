@@ -1,17 +1,18 @@
-import java.util.ArrayList;
+/**
+ * 
+ * @author Andrew Thomas, Harrison Schultz, Ran An, Zach Town
+ */
 import java.util.Stack;
-
-
 
 public class InputParser {
 	
 	public InputParser(){
 		
 	};
-	public String Solve(String[] input){
+	public double Solve(String[] Splitter()){
 	    double operand1, operand2, output;
 	    String operator; 
-	    boolean operand = false, notEmpty = true;
+	    boolean operand = false;
 	    Stack<Double> operandStack = new Stack<Double>();
 	    Stack<String> operatorStack = new Stack<String>();
 
@@ -23,53 +24,25 @@ public class InputParser {
 	            operandStack.push(currentOperand);
 	        }
 	        else{
-
-	                if(operatorStack.isEmpty()){
-
-	                    operatorStack.push(currentElement);
-	                }
-	                else{
-
-	                    if( /* stack value */ (precedenceLevel(operatorStack.peek()) >= (precedenceLevel(currentElement)) /* input value */)){
-
-	                        do{
-
+	        	if(operatorStack.isEmpty())
+	                    operatorStack.push(currentElement);	
+	            else{     
+	                while(!operatorStack.isEmpty() && precedenceLevel(operatorStack.peek()) >=  (precedenceLevel(currentElement))){
 	                            operand1 = operandStack.pop();
 	                            operand2 = operandStack.pop();
 	                            operator = operatorStack.pop();
-	                            output = operand2+operand1+operator;
-	                            operandStack.push("" + output);   
-
-	                            if(operatorStack.isEmpty() /* end loop if stack if empty */){                               
-	                            	break;
-	                            	}
-	                            if(/* top of operator stack */ (precedenceLevel(operatorStack.peek().charAt(0))) <  (precedenceLevel(currentElement) /* input value */) ){
-	                            	break;
-	                            	}
-
-	                        } while(notEmpty);                      
+	                            output = calcFunctionCaller(operand1,operand2);
+	                            operandStack.push(output);  
 	                    }
+                      
+	            	}
 
-	                    operatorStack.push(currentElement);
-	                }
+	             operatorStack.push(currentElement);
+	            }
 	        }
 	    }
 
-	    do{
-	        operand1 = operandStack.pop();
-	        operand2 = operandStack.pop();
-	        operator = operatorStack.pop();
-	        output = operand2+operand1+operator;
-	        operandStack.push(output);
-
-	        if(operatorStack.isEmpty() /* end loop if stack if empty */){                               
-	        break;
-	        }
-
-	    }while(notEmpty);
-
-	    String out = operandStack.pop();
-	    return out;         
+	    return output;         
 	}
 
 
