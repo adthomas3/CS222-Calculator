@@ -27,6 +27,7 @@ public class NumberPadFrame extends JFrame {
 			i++;
 			add(numbers);
 		}
+	
 		
 	
 	}
