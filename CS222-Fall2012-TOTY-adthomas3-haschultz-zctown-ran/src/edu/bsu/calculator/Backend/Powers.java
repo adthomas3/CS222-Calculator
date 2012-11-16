@@ -25,7 +25,7 @@ public class Powers {
 		return Math.pow(base, exponent);
 	}
 	
-	public static double Calculate(double b, double e){
+	public static double Calculate(double e, double b){
 		return Math.pow(b, e);
 	}
 }
