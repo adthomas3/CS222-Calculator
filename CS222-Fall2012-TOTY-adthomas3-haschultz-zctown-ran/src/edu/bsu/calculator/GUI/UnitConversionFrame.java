@@ -26,15 +26,12 @@ public class UnitConversionFrame extends JFrame {
 		setVisible(true);
 		setResizable(false);
 		
-		JComboBox conversionType = new JComboBox();
+		JComboBox<String> conversionType = new JComboBox<String>();
 		add(conversionType);
-		conversionType.addItem("Area");
 		conversionType.addItem("Length");
-		conversionType.addItem("Pressure");
 		conversionType.addItem("Speed");
 		conversionType.addItem("Temperature");
 		conversionType.addItem("Time");
-		conversionType.addItem("Volume");
 		conversionType.addItem("Weights and Masses");
 		
 		conversionType.addActionListener(new ActionListener(){
@@ -61,7 +58,7 @@ public class UnitConversionFrame extends JFrame {
 		});
 		
 		
-		JComboBox areaConversion = new JComboBox();
+		JComboBox<String> areaConversion = new JComboBox<String>();
 		add(areaConversion);
 		areaConversion.addItem("Acres");
 		areaConversion.addItem("Hectares");
@@ -90,7 +87,7 @@ public class UnitConversionFrame extends JFrame {
 		add(to);
 		
 		
-		JComboBox conversionTo = new JComboBox();
+		JComboBox<String> conversionTo = new JComboBox<String>();
 		add(conversionTo);
 		conversionTo.addItem("Acres");
 		conversionTo.addItem("Hectares");

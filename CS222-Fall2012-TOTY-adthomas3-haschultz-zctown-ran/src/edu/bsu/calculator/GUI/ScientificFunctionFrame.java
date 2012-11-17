@@ -15,16 +15,19 @@ import javax.swing.JButton;
 public class ScientificFunctionFrame extends JFrame {
 
 	private static final long serialVersionUID = 696681375664303576L;
+	
+	private SimpleCalculatorFrame calcFrame;
 
-	public ScientificFunctionFrame(String title){
+	public ScientificFunctionFrame(String title, SimpleCalculatorFrame frame){
 		
 		super(title);
-		GridLayout grid = new GridLayout(11, 3);
+		GridLayout grid = new GridLayout(10, 4);
 		setLayout(grid);
 		setSize(300,500);
 		setVisible(true);
 		setResizable(false);
 		
+		calcFrame = frame;
 		JButton openParentheses = new JButton("(");
 		add(openParentheses);
 		
@@ -33,7 +36,7 @@ public class ScientificFunctionFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
+				calcFrame.setComputationTextfield("(");
 					
 					
 			}
@@ -48,7 +51,7 @@ public class ScientificFunctionFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
+				calcFrame.setComputationTextfield(")");
 					
 					
 			}
@@ -63,7 +66,7 @@ public class ScientificFunctionFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
+				calcFrame.setComputationTextfield("%");
 					
 					
 			}
@@ -78,7 +81,7 @@ public class ScientificFunctionFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
+				calcFrame.setComputationTextfield("1/X");
 					
 					
 			}
@@ -93,7 +96,7 @@ public class ScientificFunctionFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
+				calcFrame.setComputationTextfield("x^2");
 					
 					
 			}
@@ -108,14 +111,14 @@ public class ScientificFunctionFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
+				calcFrame.setComputationTextfield("x^n");
 					
 					
 			}
 
 		});
 		
-		JButton factorial = new JButton("%");
+		JButton factorial = new JButton("!");
 		add(factorial);
 		
 		factorial.addActionListener(new ActionListener(){
@@ -123,7 +126,7 @@ public class ScientificFunctionFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
+				calcFrame.setComputationTextfield("!");
 					
 					
 			}
@@ -138,7 +141,7 @@ public class ScientificFunctionFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
+				calcFrame.setComputationTextfield("sqrt");
 					
 					
 			}
@@ -153,7 +156,7 @@ public class ScientificFunctionFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
+				calcFrame.setComputationTextfield("cbrt");
 					
 					
 			}
@@ -168,7 +171,7 @@ public class ScientificFunctionFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
+				calcFrame.setComputationTextfield("xrt");
 					
 					
 			}
@@ -183,8 +186,10 @@ public class ScientificFunctionFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
+				//should be used to switch between degrees and radians
 				
-					
+				calcFrame.setComputationTextfield("deg");
+				
 					
 			}
 
@@ -198,7 +203,9 @@ public class ScientificFunctionFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
+				//should be used to switch between degrees and radians
 				
+				calcFrame.setComputationTextfield("rad");
 					
 					
 			}
@@ -213,7 +220,7 @@ public class ScientificFunctionFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
+				calcFrame.setComputationTextfield("sin");
 					
 					
 			}
@@ -228,7 +235,7 @@ public class ScientificFunctionFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
+				calcFrame.setComputationTextfield("cos");
 					
 					
 			}
@@ -243,7 +250,7 @@ public class ScientificFunctionFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
+				calcFrame.setComputationTextfield("tan");
 					
 					
 			}
@@ -258,7 +265,7 @@ public class ScientificFunctionFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
+				calcFrame.setComputationTextfield("csc");
 					
 					
 			}
@@ -273,7 +280,7 @@ public class ScientificFunctionFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
+				calcFrame.setComputationTextfield("sec");
 					
 					
 			}
@@ -288,9 +295,92 @@ public class ScientificFunctionFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
+				calcFrame.setComputationTextfield("cot");
 				
-					
-					
+			}
+
+		});
+		
+		JButton sinh = new JButton("sinh");
+		add(sinh);
+		
+		sinh.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				calcFrame.setComputationTextfield("sinh");
+				
+			}
+
+		});
+		
+		JButton cosh = new JButton("cosh");
+		add(cosh);
+		
+		cosh.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				calcFrame.setComputationTextfield("cosh");
+				
+			}
+
+		});
+		
+		JButton tanh = new JButton("tanh");
+		add(tanh);
+		
+		tanh.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				calcFrame.setComputationTextfield("tanh");
+				
+			}
+
+		});
+		
+		JButton csch = new JButton("csch");
+		add(csch);
+		
+		csch.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				calcFrame.setComputationTextfield("csch");
+				
+			}
+
+		});
+		
+		JButton sech = new JButton("sech");
+		add(sech);
+		
+		sech.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				calcFrame.setComputationTextfield("sech");
+				
+			}
+
+		});
+		
+		JButton coth = new JButton("coth");
+		add(coth);
+		
+		coth.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				calcFrame.setComputationTextfield("coth");
+				
 			}
 
 		});
@@ -303,7 +393,7 @@ public class ScientificFunctionFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
+				calcFrame.setComputationTextfield("sin^-1");
 					
 					
 			}
@@ -318,7 +408,7 @@ public class ScientificFunctionFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
+				calcFrame.setComputationTextfield("cos^-1");
 					
 					
 			}
@@ -333,7 +423,7 @@ public class ScientificFunctionFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
+				calcFrame.setComputationTextfield("tan^-1");
 					
 					
 			}
@@ -348,7 +438,7 @@ public class ScientificFunctionFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
+				calcFrame.setComputationTextfield("csc^-1");
 					
 					
 			}
@@ -363,7 +453,7 @@ public class ScientificFunctionFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
+				calcFrame.setComputationTextfield("sec^-1");
 					
 					
 			}
@@ -378,7 +468,7 @@ public class ScientificFunctionFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
+				calcFrame.setComputationTextfield("cot^-1");
 					
 					
 			}
@@ -393,7 +483,7 @@ public class ScientificFunctionFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
+				calcFrame.setComputationTextfield("log2");
 					
 					
 			}
@@ -408,7 +498,7 @@ public class ScientificFunctionFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
+				calcFrame.setComputationTextfield("2^x");
 					
 					
 			}
@@ -423,7 +513,7 @@ public class ScientificFunctionFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
+				calcFrame.setComputationTextfield("log10");
 					
 					
 			}
@@ -438,7 +528,7 @@ public class ScientificFunctionFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
+				calcFrame.setComputationTextfield("10^x");
 					
 					
 			}
@@ -453,7 +543,7 @@ public class ScientificFunctionFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
+				calcFrame.setComputationTextfield("ln");
 					
 					
 			}
@@ -468,7 +558,7 @@ public class ScientificFunctionFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
+				calcFrame.setComputationTextfield("e^x");
 					
 					
 			}
@@ -483,7 +573,7 @@ public class ScientificFunctionFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
+				calcFrame.setComputationTextfield(Math.PI + "");
 					
 					
 			}
@@ -498,7 +588,7 @@ public class ScientificFunctionFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
+				calcFrame.setComputationTextfield(Math.E + "");
 					
 					
 			}
@@ -513,9 +603,8 @@ public class ScientificFunctionFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-			//SimpleCalculatorFrame.computationTextfield.setText(computatationTextfield.getText() +"+");
-			
-			
+				calcFrame.setComputationTextfield(Math.random() + "");
+				
 			}
 
 		});
@@ -524,3 +613,4 @@ public class ScientificFunctionFrame extends JFrame {
 		
 	}
 }
+

@@ -27,7 +27,7 @@ public class ProgrammerConversionFrame extends JFrame {
 		setVisible(true);
 		setResizable(false);
 		
-		JComboBox convert = new JComboBox();
+		JComboBox<String> convert = new JComboBox<String>();
 		add(convert);
 		convert.addItem("Binary");
 		convert.addItem("Octal");
@@ -49,7 +49,7 @@ public class ProgrammerConversionFrame extends JFrame {
 		JLabel to = new JLabel("To:");
 		add(to);
 		
-		JComboBox convertTo = new JComboBox();
+		JComboBox<String> convertTo = new JComboBox<String>();
 		add(convertTo);
 		convertTo.addItem("Binary");
 		convertTo.addItem("Octal");

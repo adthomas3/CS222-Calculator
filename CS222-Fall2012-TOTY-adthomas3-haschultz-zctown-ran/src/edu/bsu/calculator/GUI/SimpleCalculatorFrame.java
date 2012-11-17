@@ -5,8 +5,8 @@
 
 
 package edu.bsu.calculator.GUI;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -21,6 +21,11 @@ import edu.bsu.calculator.Backend.InputParser;
 public class SimpleCalculatorFrame extends JFrame
 {
 	private static final long serialVersionUID = -6084863562874622616L;
+	
+	private final JTextField ComputationTextfield;
+	private ScientificFunctionFrame frame;
+	private NumberPadFrame frame2;
+	
 
 	public SimpleCalculatorFrame(String title)
 	{
@@ -28,16 +33,13 @@ public class SimpleCalculatorFrame extends JFrame
 		setSize(900, 400);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		GridBagLayout gridbag = new GridBagLayout();
-		setLayout(gridbag);
-		
-		GridBagConstraints constraints = new GridBagConstraints();
-	
-		constraints.fill = GridBagConstraints.BOTH;
+		GridLayout grid = new GridLayout(5,2);
+		setLayout(grid);
 		
         boolean selected = false;
         final JCheckBox scientific = new JCheckBox("Scientific", selected);
-        add(scientific, constraints);
+        add(scientific);
+        
         
         scientific.addActionListener(new ActionListener(){
 
@@ -46,8 +48,8 @@ public class SimpleCalculatorFrame extends JFrame
 				
 				if (scientific.isSelected() == true)
 				{
-					ScientificFunctionFrame frame = new ScientificFunctionFrame("Scientific Functions");
-				    frame.setVisible(true);
+					scientificFunctionFrameReference(frame);
+					frame.setVisible(true);
 				}
 				
 			    
@@ -59,7 +61,7 @@ public class SimpleCalculatorFrame extends JFrame
         
         boolean selected2 = false;
         final JCheckBox programmer = new JCheckBox("Programmer", selected2);
-        add(programmer, constraints);
+        add(programmer);
         
         programmer.addActionListener(new ActionListener(){
 
@@ -80,7 +82,7 @@ public class SimpleCalculatorFrame extends JFrame
        
         boolean selected3 = false;
         final JCheckBox unitConversion = new JCheckBox("Unit Conversion", selected3);
-        add(unitConversion, constraints);
+        add(unitConversion);
         
         unitConversion.addActionListener(new ActionListener(){
 
@@ -101,7 +103,7 @@ public class SimpleCalculatorFrame extends JFrame
         
         boolean selected4 = false;
         final JCheckBox numberPad = new JCheckBox("Number Pad", selected4);
-        add(numberPad, constraints);
+        add(numberPad);
         
         numberPad.addActionListener(new ActionListener(){
 
@@ -110,31 +112,24 @@ public class SimpleCalculatorFrame extends JFrame
 				
 				if (numberPad.isSelected() == true)
 				{
-					NumberPadFrame panel = new NumberPadFrame("Number Pad");
-				    panel.setVisible(true);
+					numberPadFrameReference(frame2);
+				    frame2.setVisible(true);
 				}
 			}
 
 		});
 		
-		constraints.ipadx = 350;
-        constraints.ipady = 300;
 		
-		final JTextField ComputationTextfield = new JTextField();
+		ComputationTextfield = new JTextField();
 		ComputationTextfield.setSize(350, 2);
-		add(ComputationTextfield, constraints);
+		ComputationTextfield.setHorizontalAlignment(JTextField.RIGHT);
+		add(ComputationTextfield);
 		
 		final JTextArea OutputHistory = new JTextArea();
 		OutputHistory.setSize(350, 300);
-		add(OutputHistory, constraints);
-	
-		constraints.ipadx = 0;
-		constraints.ipady = 0;
-		constraints.fill = GridBagConstraints.BOTH;
-		constraints.weightx = 1;
-		constraints.weighty = GridBagConstraints.BOTH;
-		constraints.gridy = 2;
-		constraints.gridx = 0;
+		//OutputHistory.setAlignmentX(RIGHT_ALIGNMENT);
+		//OutputHistory.setAlignmentY(BOTTOM_ALIGNMENT);
+		add(OutputHistory);
 		
 		
 		
@@ -166,35 +161,118 @@ public class SimpleCalculatorFrame extends JFrame
 			
 		
 	    JButton addition = new JButton("+");
-		add(addition, constraints);
+		add(addition);
 		
-		constraints.gridx = 1;
+	    addition.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				setComputationTextfield("+");
+			
+			}
+
+		});
+		
 		
 		JButton subtraction = new JButton("-");
-		add(subtraction, constraints);
+		add(subtraction);
 		
-		constraints.gridx = 2;
+		subtraction.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				setComputationTextfield("-");
+			
+			}
+
+		});
+		
 		
 		JButton multiplication = new JButton("x");
-		add(multiplication, constraints);
+		add(multiplication);
 		
-		constraints.gridx = 3;
+		multiplication.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				setComputationTextfield("*");
+			
+			}
+
+		});
+		
 		
 		JButton division = new JButton("/");
-		add(division, constraints);
+		add(division);
 		
-		constraints.gridx = 4;
+		division.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				setComputationTextfield("/");
+			
+			}
+
+		});
+	
 		
 		JButton copy = new JButton("copy");
-		add(copy, constraints);
+		add(copy);
 		
-		constraints.gridx = 5;
-        constraints.gridwidth = GridBagConstraints.REMAINDER;
+		copy.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				ComputationTextfield.copy();
+			
+			}
+
+		});
+		
 		
         JButton clear = new JButton("clear");
-		add(clear, constraints);
+		add(clear);
 		
+		clear.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				setComputationTextfield("");
+			
+			}
+
+		});
+		
+		
+		
+	}
+	
+	public void scientificFunctionFrameReference(ScientificFunctionFrame frame)
+	{
+		frame = new ScientificFunctionFrame("Scientific Functions", this);
+	}
+	
+	public void numberPadFrameReference(NumberPadFrame frame2)
+	{
+		frame2 = new NumberPadFrame("Number Pad", this);
+	}
+	
+	public void setComputationTextfield(String text)
+	{
+		ComputationTextfield.setText(text);
 		
 	}
 
 }
+
+
+
+
+
+
