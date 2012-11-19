@@ -7,6 +7,8 @@
 package edu.bsu.calculator.GUI;
 
 import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -37,9 +39,9 @@ public class SimpleCalculatorFrame extends JFrame
 		setSize(900, 400);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		
-		GridLayout grid = new GridLayout(5,2);
+		GridLayout grid = new GridLayout(4,4);
 		setLayout(grid);
+	
 		
 		/*JPanel panel = new JPanel(new GridLayout(1,4));
 		panel.setSize(200, 400);
@@ -58,7 +60,7 @@ public class SimpleCalculatorFrame extends JFrame
 				if (scientific.isSelected() == true)
 				{
 					scientificFunctionFrameReference(frame);
-					frame.setVisible(true);
+					
 				}
 				
 			    
@@ -124,25 +126,27 @@ public class SimpleCalculatorFrame extends JFrame
 				if (numberPad.isSelected() == true)
 				{
 					numberPadFrameReference(frame2);
-				    frame2.setVisible(true);
+				    
 				}
 			}
 
 		});
         
-        /*add(panel);
-        setContentPane(panel);
-        panel.validate();*/
+       
+       /* panel.validate();
+        add(panel);
+        */
         
         
 		
-       // JPanel panel2 = new JPanel(new FlowLayout());
+        //JPanel panel2 = new JPanel(new GridLayout(2,1));
         
 		
 		ComputationTextfield = new JTextField();
 		//ComputationTextfield.setSize();
 		ComputationTextfield.setHorizontalAlignment(JTextField.RIGHT);
 		add(ComputationTextfield);
+		
 		
 		final JTextArea OutputHistory = new JTextArea();
 		OutputHistory.setSize(350, 300);
@@ -160,8 +164,9 @@ public class SimpleCalculatorFrame extends JFrame
 				int e = key.getKeyCode();
 				if (e == KeyEvent.VK_ENTER){
 					String s = ComputationTextfield.getText();
-					OutputHistory.setText(parser.Solve(parser.Splitter(s)));
+					OutputHistory.setText(OutputHistory.getText() + "\n" + parser.Solve(parser.Splitter(s)));
 					OutputHistory.updateUI();
+					ComputationTextfield.setText("");
 				}
 			}
 
@@ -180,11 +185,10 @@ public class SimpleCalculatorFrame extends JFrame
 		
 		//add(panel2);
 		
-		//JPanel panel3 = new JPanel(new GridLayout());
-			
+		//JPanel panel3 = new JPanel(new GridLayout(7,1));
 		
 	    JButton addition = new JButton("+");
-		add(addition);
+	    add(addition);
 		
 	    addition.addActionListener(new ActionListener(){
 
@@ -196,8 +200,8 @@ public class SimpleCalculatorFrame extends JFrame
 			}
 
 		});
-		
-		
+
+	    
 		JButton subtraction = new JButton("-");
 		add(subtraction);
 		
@@ -211,7 +215,7 @@ public class SimpleCalculatorFrame extends JFrame
 			}
 
 		});
-		
+	
 		
 		JButton multiplication = new JButton("x");
 		add(multiplication);
@@ -257,7 +261,6 @@ public class SimpleCalculatorFrame extends JFrame
 
 		});
 		
-		
         JButton clear = new JButton("clear");
 		add(clear);
 		
@@ -265,12 +268,12 @@ public class SimpleCalculatorFrame extends JFrame
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				setComputationTextfield("");
+				ComputationTextfield.setText(" ");
 			
 			}
 
 		});
+		
 		
 		JButton equals = new JButton("=");
 		add(equals);
@@ -289,8 +292,10 @@ public class SimpleCalculatorFrame extends JFrame
 
 		});
 		
-		//add(panel3);
 		
+	  /* add(panel3);
+	   panel3.validate();
+		*/
 		
 		
 		
@@ -309,12 +314,11 @@ public class SimpleCalculatorFrame extends JFrame
 	
 	public void setComputationTextfield(String text)
 	{
-		ComputationTextfield.setText(text);
+		ComputationTextfield.setText(ComputationTextfield.getText() + text);
 		
 	}
 	
 }
-
 
 
 
