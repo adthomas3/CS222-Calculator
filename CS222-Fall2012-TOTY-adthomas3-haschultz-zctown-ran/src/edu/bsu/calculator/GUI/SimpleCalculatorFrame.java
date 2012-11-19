@@ -6,14 +6,18 @@
 
 package edu.bsu.calculator.GUI;
 
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import edu.bsu.calculator.Backend.InputParser;
@@ -33,8 +37,13 @@ public class SimpleCalculatorFrame extends JFrame
 		setSize(900, 400);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		
 		GridLayout grid = new GridLayout(5,2);
 		setLayout(grid);
+		
+		/*JPanel panel = new JPanel(new GridLayout(1,4));
+		panel.setSize(200, 400);
+		setContentPane(panel);*/
 		
         boolean selected = false;
         final JCheckBox scientific = new JCheckBox("Scientific", selected);
@@ -57,7 +66,7 @@ public class SimpleCalculatorFrame extends JFrame
 
 		});
         
-      
+    
         
         boolean selected2 = false;
         final JCheckBox programmer = new JCheckBox("Programmer", selected2);
@@ -79,7 +88,8 @@ public class SimpleCalculatorFrame extends JFrame
 
 		});
         
-       
+        
+        
         boolean selected3 = false;
         final JCheckBox unitConversion = new JCheckBox("Unit Conversion", selected3);
         add(unitConversion);
@@ -100,6 +110,7 @@ public class SimpleCalculatorFrame extends JFrame
 			}
 
 		});
+       
         
         boolean selected4 = false;
         final JCheckBox numberPad = new JCheckBox("Number Pad", selected4);
@@ -118,10 +129,18 @@ public class SimpleCalculatorFrame extends JFrame
 			}
 
 		});
+        
+        /*add(panel);
+        setContentPane(panel);
+        panel.validate();*/
+        
+        
 		
+       // JPanel panel2 = new JPanel(new FlowLayout());
+        
 		
 		ComputationTextfield = new JTextField();
-		ComputationTextfield.setSize(350, 2);
+		//ComputationTextfield.setSize();
 		ComputationTextfield.setHorizontalAlignment(JTextField.RIGHT);
 		add(ComputationTextfield);
 		
@@ -158,6 +177,10 @@ public class SimpleCalculatorFrame extends JFrame
 				
 			}
 		});
+		
+		//add(panel2);
+		
+		//JPanel panel3 = new JPanel(new GridLayout());
 			
 		
 	    JButton addition = new JButton("+");
@@ -249,6 +272,27 @@ public class SimpleCalculatorFrame extends JFrame
 
 		});
 		
+		JButton equals = new JButton("=");
+		add(equals);
+		
+		copy.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				InputParser parser = new InputParser();
+				String s = ComputationTextfield.getText();
+				OutputHistory.setText(parser.Solve(parser.Splitter(s)));
+				OutputHistory.updateUI();
+			
+			}
+
+		});
+		
+		//add(panel3);
+		
+		
+		
 		
 		
 	}
@@ -268,7 +312,7 @@ public class SimpleCalculatorFrame extends JFrame
 		ComputationTextfield.setText(text);
 		
 	}
-
+	
 }
 
 
