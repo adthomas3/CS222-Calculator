@@ -11,7 +11,7 @@ public class CalculatorGUI {
 	
 		 SimpleCalculatorFrame frame = new SimpleCalculatorFrame("Cruel Calculations");
 		 frame.setVisible(true);
-		 //frame.setResizable(false);
+		 frame.setResizable(false);
 
 	}
 

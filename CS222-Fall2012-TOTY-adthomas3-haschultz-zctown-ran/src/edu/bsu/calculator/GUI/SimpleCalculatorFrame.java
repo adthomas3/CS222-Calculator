@@ -6,16 +6,14 @@
 
 package edu.bsu.calculator.GUI;
 
-import java.awt.FlowLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+
+
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -23,6 +21,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import edu.bsu.calculator.Backend.InputParser;
+
+
 
 public class SimpleCalculatorFrame extends JFrame
 {
@@ -36,16 +36,12 @@ public class SimpleCalculatorFrame extends JFrame
 	public SimpleCalculatorFrame(String title)
 	{
 		super(title);
-		setSize(900, 400);
+		setSize(488, 375);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		GridLayout grid = new GridLayout(4,4);
-		setLayout(grid);
-	
 		
-		/*JPanel panel = new JPanel(new GridLayout(1,4));
-		panel.setSize(200, 400);
-		setContentPane(panel);*/
+		JPanel panel = new JPanel(new GridLayout(4,1));
+		panel.setSize(138, 325);
 		
         boolean selected = false;
         final JCheckBox scientific = new JCheckBox("Scientific", selected);
@@ -132,26 +128,34 @@ public class SimpleCalculatorFrame extends JFrame
 
 		});
         
-       
-       /* panel.validate();
+        panel.add(scientific);
+        panel.add(programmer);
+        panel.add(unitConversion);
+        panel.add(numberPad);
         add(panel);
-        */
+        panel.validate();
         
         
-		
-        //JPanel panel2 = new JPanel(new GridLayout(2,1));
         
 		
+        JPanel panel2 = new JPanel(new GridLayout());
+        panel2.setSize(350, 50);
+        
 		ComputationTextfield = new JTextField();
-		//ComputationTextfield.setSize();
+		ComputationTextfield.setSize(350, 50);
 		ComputationTextfield.setHorizontalAlignment(JTextField.RIGHT);
 		add(ComputationTextfield);
 		
+		panel2.setLocation(138, 250);
+		panel2.add(ComputationTextfield);
+		add(panel2);
+		panel2.validate();
+		
+		JPanel panel3 = new JPanel(new GridLayout());
+		panel3.setSize(350, 250);
 		
 		final JTextArea OutputHistory = new JTextArea();
-		OutputHistory.setSize(350, 300);
-		//OutputHistory.setAlignmentX(RIGHT_ALIGNMENT);
-		//OutputHistory.setAlignmentY(BOTTOM_ALIGNMENT);
+		OutputHistory.setSize(350, 250);
 		add(OutputHistory);
 		
 		
@@ -172,20 +176,27 @@ public class SimpleCalculatorFrame extends JFrame
 
 			@Override
 			public void keyReleased(KeyEvent key) {
-				// TODO Auto-generated method stub
+				
 				
 			}
 
 			@Override
 			public void keyTyped(KeyEvent arg0) {
-				// TODO Auto-generated method stub
+				
 				
 			}
 		});
 		
-		//add(panel2);
+		panel3.setLocation(138, 0);
+		panel3.add(OutputHistory);
+		add(panel3);
+		panel3.validate();
 		
-		//JPanel panel3 = new JPanel(new GridLayout(7,1));
+
+		JPanel panel4 = new JPanel(new GridLayout(1, 7));
+		panel4.setSize(350, 50);
+		
+		
 		
 	    JButton addition = new JButton("+");
 	    add(addition);
@@ -292,10 +303,23 @@ public class SimpleCalculatorFrame extends JFrame
 
 		});
 		
-		
-	  /* add(panel3);
-	   panel3.validate();
-		*/
+		panel4.setLocation(138, 300);
+		panel4.add(addition);
+		panel4.add(subtraction);
+		panel4.add(multiplication);
+		panel4.add(division);
+		panel4.add(copy);
+		panel4.add(clear);
+		panel4.add(equals);
+	    add(panel4);
+	    panel4.validate();
+	    
+	    
+	    //used to stack below the rest of the panels to keep 
+	    //the 3rd panel from stacking the buttons below
+	    JPanel panel5 = new JPanel();
+	    panel5.setLocation(400, 0);
+	    add(panel5);
 		
 		
 		
