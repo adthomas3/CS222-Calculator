@@ -26,7 +26,7 @@ public class UnitConversionFrame extends JFrame {
 		setVisible(true);
 		setResizable(false);
 		
-		JComboBox<String> conversionType = new JComboBox<String>();
+		final JComboBox<String> conversionType = new JComboBox<String>();
 		add(conversionType);
 		conversionType.addItem("Length");
 		conversionType.addItem("Speed");
@@ -39,7 +39,7 @@ public class UnitConversionFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				/*if (conversionType.)*/
+				//if (conversionType))
 					
 				/**
 				 * Make it so that when a specific type of conversion is selected 
@@ -58,7 +58,7 @@ public class UnitConversionFrame extends JFrame {
 		});
 		
 		
-		JComboBox<String> areaConversion = new JComboBox<String>();
+		final JComboBox<String> areaConversion = new JComboBox<String>();
 		add(areaConversion);
 		areaConversion.addItem("Acres");
 		areaConversion.addItem("Hectares");
@@ -76,7 +76,7 @@ public class UnitConversionFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
+				areaConversion.setVisible(false);
 					
 					
 			}
@@ -87,25 +87,25 @@ public class UnitConversionFrame extends JFrame {
 		add(to);
 		
 		
-		JComboBox<String> conversionTo = new JComboBox<String>();
-		add(conversionTo);
-		conversionTo.addItem("Acres");
-		conversionTo.addItem("Hectares");
-		conversionTo.addItem("Square Centimeters");
-		conversionTo.addItem("Square Feet");
-		conversionTo.addItem("Square Inches");
-		conversionTo.addItem("Square Kilometers");
-		conversionTo.addItem("Square Meters");
-		conversionTo.addItem("Square Miles");
-		conversionTo.addItem("Square Millimeters");
-		conversionTo.addItem("Square Yards");
+		final JComboBox<String> conversionToArea = new JComboBox<String>();
+		add(conversionToArea);
+		conversionToArea.addItem("Acres");
+		conversionToArea.addItem("Hectares");
+		conversionToArea.addItem("Square Centimeters");
+		conversionToArea.addItem("Square Feet");
+		conversionToArea.addItem("Square Inches");
+		conversionToArea.addItem("Square Kilometers");
+		conversionToArea.addItem("Square Meters");
+		conversionToArea.addItem("Square Miles");
+		conversionToArea.addItem("Square Millimeters");
+		conversionToArea.addItem("Square Yards");
 		
-		conversionTo.addActionListener(new ActionListener(){
+		conversionToArea.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
+				conversionToArea.setVisible(false);
 					
 					
 			}
